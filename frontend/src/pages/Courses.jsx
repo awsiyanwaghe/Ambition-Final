@@ -1,3 +1,4 @@
+// pages/Courses.jsx
 import React, { useState } from 'react';
 
 const Courses = () => {
@@ -61,47 +62,47 @@ const Courses = () => {
   ];
 
   return (
-    <div className="courses-page">
-      <div className="page-header">
-        <h1>Our Courses</h1>
-        <p>Choose the perfect course for your language learning journey</p>
+    <div>
+      <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white pt-28 pb-16 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Courses</h1>
+        <p className="text-xl">Choose the perfect course for your language learning journey</p>
       </div>
       
-      <div className="container">
-        <div className="courses-grid-full">
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map(course => (
-            <div key={course.id} className="course-card-large" onClick={() => setSelectedCourse(course)}>
-              <div className="course-header">
-                <h3>{course.name}</h3>
-                <span className="course-level">{course.level}</span>
+            <div key={course.id} className="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 transition cursor-pointer" onClick={() => setSelectedCourse(course)}>
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="text-xl font-bold text-blue-700">{course.name}</h3>
+                <span className="bg-yellow-400 text-blue-700 px-3 py-1 rounded-full text-sm">{course.level}</span>
               </div>
-              <p className="course-duration">📅 {course.duration}</p>
-              <p className="course-description">{course.description}</p>
-              <div className="course-footer">
-                <span className="course-fee">{course.fee}</span>
-                <button className="btn-details">View Details</button>
+              <p className="text-gray-500 text-sm mb-2">📅 {course.duration}</p>
+              <p className="text-gray-600 mb-4">{course.description}</p>
+              <div className="flex justify-between items-center pt-4 border-t border-gray-200">
+                <span className="text-xl font-bold text-blue-700">{course.fee}</span>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View Details</button>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Modal for course details */}
+      {/* Modal */}
       {selectedCourse && (
-        <div className="modal" onClick={() => setSelectedCourse(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <span className="close" onClick={() => setSelectedCourse(null)}>&times;</span>
-            <h2>{selectedCourse.name}</h2>
-            <p><strong>Duration:</strong> {selectedCourse.duration}</p>
-            <p><strong>Level:</strong> {selectedCourse.level}</p>
-            <p><strong>Fee:</strong> {selectedCourse.fee}</p>
-            <h3>What You'll Learn:</h3>
-            <ul>
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={() => setSelectedCourse(null)}>
+          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative" onClick={(e) => e.stopPropagation()}>
+            <span className="absolute top-4 right-4 text-3xl cursor-pointer text-gray-500 hover:text-gray-700" onClick={() => setSelectedCourse(null)}>&times;</span>
+            <h2 className="text-2xl font-bold text-blue-700 mb-4">{selectedCourse.name}</h2>
+            <p className="mb-2"><strong>Duration:</strong> {selectedCourse.duration}</p>
+            <p className="mb-2"><strong>Level:</strong> {selectedCourse.level}</p>
+            <p className="mb-4"><strong>Fee:</strong> {selectedCourse.fee}</p>
+            <h3 className="text-xl font-bold text-blue-700 mb-3">What You'll Learn:</h3>
+            <ul className="list-disc list-inside mb-6 space-y-1">
               {selectedCourse.curriculum.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index} className="text-gray-600">{item}</li>
               ))}
             </ul>
-            <button className="enroll-btn" onClick={() => window.location.href='/contact'}>Enroll Now</button>
+            <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition" onClick={() => window.location.href='/contact'}>Enroll Now</button>
           </div>
         </div>
       )}

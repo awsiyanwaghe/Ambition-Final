@@ -1,5 +1,5 @@
+// pages/Home.jsx
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -18,40 +18,35 @@ const Home = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // Replace with your backend URL when connected
-      // await axios.post('http://localhost:5000/api/enquiries', formData);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', course: '', message: '' });
-      setTimeout(() => setSubmitted(false), 3000);
-    } catch (error) {
-      alert('Error submitting enquiry. Please try again.');
-    }
+    setSubmitted(true);
+    setFormData({ name: '', email: '', phone: '', course: '', message: '' });
+    setTimeout(() => setSubmitted(false), 3000);
   };
 
   return (
-    <div className="home">
+    <div>
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-overlay">
-          <div className="hero-content">
-            <h1 className="hero-title">The Sanskrit Hub</h1>
-            <p className="hero-subtitle">Sanskrit & Hindi Language Classes In Andheri, Mumbai</p>
-            <div className="hero-quote">
+      <section className="relative h-screen bg-gradient-to-r from-blue-900 to-blue-700 mt-16">
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="relative h-full flex items-center justify-center text-center text-white px-4">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fadeInUp">The Sanskrit Hub</h1>
+            <p className="text-xl md:text-2xl mb-6 animate-fadeInUp animation-delay-200">Sanskrit & Hindi Language Classes In Andheri, Mumbai</p>
+            <div className="italic text-lg mb-8 animate-fadeInUp animation-delay-400">
               <p>"Knowledge, Reasoning, Wisdom, Sharp Memory, Preparedness & Diligence"</p>
               <span>- Ancient Wisdom</span>
             </div>
-            <div className="stats-container">
-              <div className="stat-card">
-                <h3>500+</h3>
+            <div className="flex flex-col md:flex-row justify-center gap-8 animate-fadeInUp animation-delay-600">
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-yellow-400">500+</h3>
                 <p>Enrollment This Year</p>
               </div>
-              <div className="stat-card">
-                <h3>1000+</h3>
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-yellow-400">1000+</h3>
                 <p>Happy Students</p>
               </div>
-              <div className="stat-card">
-                <h3>800+</h3>
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-yellow-400">800+</h3>
                 <p>Passout Students</p>
               </div>
             </div>
@@ -60,67 +55,46 @@ const Home = () => {
       </section>
 
       {/* Objectives Section */}
-      <section className="objectives-section">
-        <div className="container">
-          <h2 className="section-title">Our Objectives</h2>
-          <div className="objectives-grid">
-            <div className="objective-card">
-              <div className="objective-icon">🌍</div>
-              <h3>Global Level</h3>
-              <p>To bring Sanskrit language to the GLOBAL LEVEL</p>
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-yellow-400 after:mx-auto after:mt-4">Our Objectives</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition text-center">
+              <div className="text-5xl mb-4">🌍</div>
+              <h3 className="text-xl font-bold text-blue-700 mb-3">Global Level</h3>
+              <p className="text-gray-600">To bring Sanskrit language to the GLOBAL LEVEL</p>
             </div>
-            <div className="objective-card">
-              <div className="objective-icon">💻</div>
-              <h3>Scientific Features</h3>
-              <p>To highlight the scientific features of Sanskrit grammar for computer applications</p>
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition text-center">
+              <div className="text-5xl mb-4">💻</div>
+              <h3 className="text-xl font-bold text-blue-700 mb-3">Scientific Features</h3>
+              <p className="text-gray-600">To highlight the scientific features of Sanskrit grammar for computer applications</p>
             </div>
-            <div className="objective-card">
-              <div className="objective-icon">🔬</div>
-              <h3>Vedic Inventions</h3>
-              <p>To showcase scientific inventions of Vedic era and connect with modern inventions</p>
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition text-center">
+              <div className="text-5xl mb-4">🔬</div>
+              <h3 className="text-xl font-bold text-blue-700 mb-3">Vedic Inventions</h3>
+              <p className="text-gray-600">To showcase scientific inventions of Vedic era and connect with modern inventions</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Enquiry Section */}
-      <section className="enquiry-section">
-        <div className="container">
-          <h2 className="section-title">Enquire Now</h2>
-          <div className="enquiry-container">
-            <form onSubmit={handleSubmit} className="enquiry-form">
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Full Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-yellow-400 after:mx-auto after:mt-4">Enquire Now</h2>
+          <div className="grid md:grid-cols-2 gap-12">
+            <form onSubmit={handleSubmit} className="bg-gray-50 p-8 rounded-xl shadow-lg">
+              <div className="mb-4">
+                <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} required className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+              <div className="mb-4">
+                <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
-              <div className="form-group">
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                />
+              <div className="mb-4">
+                <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
-              <div className="form-group">
-                <select name="course" value={formData.course} onChange={handleChange}>
+              <div className="mb-4">
+                <select name="course" value={formData.course} onChange={handleChange} className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                   <option value="">Select Course</option>
                   <option value="Sanskrit Beginner">Sanskrit Beginner</option>
                   <option value="Sanskrit Advanced">Sanskrit Advanced</option>
@@ -130,25 +104,19 @@ const Home = () => {
                   <option value="Vedic Studies">Vedic Studies</option>
                 </select>
               </div>
-              <div className="form-group">
-                <textarea
-                  name="message"
-                  placeholder="Your Message"
-                  rows="4"
-                  value={formData.message}
-                  onChange={handleChange}
-                ></textarea>
+              <div className="mb-4">
+                <textarea name="message" placeholder="Your Message" rows="4" value={formData.message} onChange={handleChange} className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
               </div>
-              <button type="submit" className="submit-btn">Submit Enquiry</button>
-              {submitted && <p className="success-msg">Enquiry submitted successfully!</p>}
+              <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">Submit Enquiry</button>
+              {submitted && <p className="text-green-600 text-center mt-4">Enquiry submitted successfully!</p>}
             </form>
             
-            <div className="whatsapp-section">
-              <h3>Quick Contact</h3>
-              <a href="https://wa.me/919820123456" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            <div className="bg-green-500 text-white p-8 rounded-xl text-center">
+              <h3 className="text-2xl font-bold mb-4">Quick Contact</h3>
+              <a href="https://wa.me/919820123456" className="inline-block bg-white text-green-500 px-8 py-3 rounded-lg font-bold hover:scale-105 transition mb-4" target="_blank" rel="noopener noreferrer">
                 💬 WhatsApp Us
               </a>
-              <div className="contact-info">
+              <div className="mt-4">
                 <p>📞 Call us: +91 98201 23456</p>
                 <p>✉️ Email: info@sanskrithub.com</p>
               </div>
@@ -158,24 +126,24 @@ const Home = () => {
       </section>
 
       {/* Featured Courses */}
-      <section className="featured-courses">
-        <div className="container">
-          <h2 className="section-title">Popular Courses</h2>
-          <div className="courses-grid">
-            <div className="course-card">
-              <h3>Sanskrit Beginner</h3>
-              <p>Learn basics of Sanskrit language, alphabet, and simple conversations</p>
-              <Link to="/courses" className="learn-more">Learn More →</Link>
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-yellow-400 after:mx-auto after:mt-4">Popular Courses</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-1 transition text-center">
+              <h3 className="text-xl font-bold text-blue-700 mb-3">Sanskrit Beginner</h3>
+              <p className="text-gray-600 mb-4">Learn basics of Sanskrit language, alphabet, and simple conversations</p>
+              <Link to="/courses" className="text-blue-600 font-semibold hover:text-blue-800">Learn More →</Link>
             </div>
-            <div className="course-card">
-              <h3>Hindi Advanced</h3>
-              <p>Master Hindi grammar, literature, and fluent communication skills</p>
-              <Link to="/courses" className="learn-more">Learn More →</Link>
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-1 transition text-center">
+              <h3 className="text-xl font-bold text-blue-700 mb-3">Hindi Advanced</h3>
+              <p className="text-gray-600 mb-4">Master Hindi grammar, literature, and fluent communication skills</p>
+              <Link to="/courses" className="text-blue-600 font-semibold hover:text-blue-800">Learn More →</Link>
             </div>
-            <div className="course-card">
-              <h3>Vedic Studies</h3>
-              <p>Explore ancient Vedic texts and their modern applications</p>
-              <Link to="/courses" className="learn-more">Learn More →</Link>
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-1 transition text-center">
+              <h3 className="text-xl font-bold text-blue-700 mb-3">Vedic Studies</h3>
+              <p className="text-gray-600 mb-4">Explore ancient Vedic texts and their modern applications</p>
+              <Link to="/courses" className="text-blue-600 font-semibold hover:text-blue-800">Learn More →</Link>
             </div>
           </div>
         </div>

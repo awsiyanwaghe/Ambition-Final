@@ -1,45 +1,46 @@
+// components/Footer.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        <div className="footer-section">
-          <h3>The Sanskrit Hub</h3>
-          <p>Preserving the ancient language of Sanskrit and promoting Hindi education</p>
-          <div className="social-links">
-            <a href="#" className="social-icon">📘</a>
-            <a href="#" className="social-icon">📷</a>
-            <a href="#" className="social-icon">▶️</a>
+    <footer className="bg-gray-900 text-white mt-16">
+      <div className="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 className="text-xl font-bold mb-4 text-blue-400">The Sanskrit Hub</h3>
+          <p className="text-gray-300">Preserving the ancient language of Sanskrit and promoting Hindi education</p>
+          <div className="flex gap-4 mt-4">
+            <a href="#" className="text-2xl hover:text-blue-400 transition">📘</a>
+            <a href="#" className="text-2xl hover:text-blue-400 transition">📷</a>
+            <a href="#" className="text-2xl hover:text-blue-400 transition">▶️</a>
           </div>
         </div>
         
-        <div className="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/courses">Courses</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+        <div>
+          <h4 className="text-lg font-semibold mb-4 text-blue-400">Quick Links</h4>
+          <ul className="space-y-2">
+            <li><Link to="/" className="text-gray-300 hover:text-blue-400 transition">Home</Link></li>
+            <li><Link to="/about" className="text-gray-300 hover:text-blue-400 transition">About Us</Link></li>
+            <li><Link to="/courses" className="text-gray-300 hover:text-blue-400 transition">Courses</Link></li>
+            <li><Link to="/contact" className="text-gray-300 hover:text-blue-400 transition">Contact</Link></li>
           </ul>
         </div>
         
-        <div className="footer-section">
-          <h4>Contact Info</h4>
-          <p>📍 Andheri, Mumbai, India</p>
-          <p>📞 +91 98201 23456</p>
-          <p>✉️ info@sanskrithub.com</p>
+        <div>
+          <h4 className="text-lg font-semibold mb-4 text-blue-400">Contact Info</h4>
+          <p className="text-gray-300">📍 Andheri, Mumbai, India</p>
+          <p className="text-gray-300">📞 +91 98201 23456</p>
+          <p className="text-gray-300">✉️ info@sanskrithub.com</p>
         </div>
         
-        <div className="footer-section">
-          <h4>Working Hours</h4>
-          <p>Monday - Friday: 9am - 7pm</p>
-          <p>Saturday: 9am - 5pm</p>
-          <p>Sunday: Closed</p>
+        <div>
+          <h4 className="text-lg font-semibold mb-4 text-blue-400">Working Hours</h4>
+          <p className="text-gray-300">Monday - Friday: 9am - 7pm</p>
+          <p className="text-gray-300">Saturday: 9am - 5pm</p>
+          <p className="text-gray-300">Sunday: Closed</p>
         </div>
       </div>
-      <div className="footer-bottom">
+      <div className="border-t border-gray-800 text-center py-4 text-gray-400">
         <p>&copy; 2024 The Sanskrit Hub. All rights reserved.</p>
       </div>
     </footer>
