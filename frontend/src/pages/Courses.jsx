@@ -1,8 +1,14 @@
-// pages/Courses.jsx
 import React, { useState } from 'react';
+
+const GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdyeMSCL_RqlDFk10pn6WsqCbI7XIo9px7SiBvnzj-OjW67Xw/viewform";
 
 const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const handleEnroll = () => {
+    window.open(GOOGLE_FORM_URL, "_blank");
+  };
 
   const courses = [
     {
@@ -10,7 +16,7 @@ const Courses = () => {
       name: "Sanskrit Beginner",
       duration: "3 months",
       level: "Beginner",
-      description: "Introduction to Sanskrit alphabet, basic vocabulary, and simple sentence formation. Perfect for absolute beginners.",
+      description: "Introduction to Sanskrit alphabet, basic vocabulary, and simple sentence formation.",
       curriculum: ["Devanagari Script", "Basic Grammar", "Simple Conversations", "Common Vocabulary"],
       fee: "₹5,000"
     },
@@ -19,7 +25,7 @@ const Courses = () => {
       name: "Sanskrit Advanced",
       duration: "6 months",
       level: "Advanced",
-      description: "Advanced grammar, literature, and composition. Ideal for those who want to master Sanskrit.",
+      description: "Advanced grammar, literature, and composition.",
       curriculum: ["Advanced Grammar", "Literature Study", "Poetry & Prose", "Translation Skills"],
       fee: "₹8,000"
     },
@@ -28,7 +34,7 @@ const Courses = () => {
       name: "Hindi Beginner",
       duration: "2 months",
       level: "Beginner",
-      description: "Learn Hindi alphabet, basic conversations, and everyday vocabulary.",
+      description: "Learn Hindi alphabet and conversations.",
       curriculum: ["Hindi Script", "Basic Grammar", "Daily Conversations", "Common Phrases"],
       fee: "₹4,000"
     },
@@ -37,7 +43,7 @@ const Courses = () => {
       name: "Hindi Advanced",
       duration: "4 months",
       level: "Advanced",
-      description: "Advanced Hindi grammar, literature, and fluent communication skills.",
+      description: "Advanced Hindi grammar and communication.",
       curriculum: ["Advanced Grammar", "Hindi Literature", "Essay Writing", "Public Speaking"],
       fee: "₹6,000"
     },
@@ -46,7 +52,7 @@ const Courses = () => {
       name: "Spoken Sanskrit",
       duration: "2 months",
       level: "All Levels",
-      description: "Focus on conversational Sanskrit for daily use and communication.",
+      description: "Conversational Sanskrit for daily use.",
       curriculum: ["Conversational Phrases", "Daily Use Vocabulary", "Role Plays", "Group Discussions"],
       fee: "₹4,500"
     },
@@ -55,7 +61,7 @@ const Courses = () => {
       name: "Vedic Studies",
       duration: "6 months",
       level: "Advanced",
-      description: "Study of Vedic texts, mantras, and their modern applications.",
+      description: "Study of Vedic texts and mantras.",
       curriculum: ["Vedic Literature", "Mantra Chanting", "Vedic Philosophy", "Modern Applications"],
       fee: "₹10,000"
     }
@@ -65,22 +71,25 @@ const Courses = () => {
     <div>
       <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white pt-28 pb-16 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Courses</h1>
-        <p className="text-xl">Choose the perfect course for your language learning journey</p>
+        <p className="text-xl">Choose your course</p>
       </div>
-      
+
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map(course => (
-            <div key={course.id} className="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 transition cursor-pointer" onClick={() => setSelectedCourse(course)}>
-              <div className="flex justify-between items-start mb-3">
-                <h3 className="text-xl font-bold text-blue-700">{course.name}</h3>
-                <span className="bg-yellow-400 text-blue-700 px-3 py-1 rounded-full text-sm">{course.level}</span>
-              </div>
-              <p className="text-gray-500 text-sm mb-2">📅 {course.duration}</p>
-              <p className="text-gray-600 mb-4">{course.description}</p>
-              <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-                <span className="text-xl font-bold text-blue-700">{course.fee}</span>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View Details</button>
+            <div
+              key={course.id}
+              className="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 transition cursor-pointer"
+              onClick={() => setSelectedCourse(course)}
+            >
+              <h3 className="text-xl font-bold text-blue-700">{course.name}</h3>
+              <p className="text-gray-500">📅 {course.duration}</p>
+              <p className="text-gray-600">{course.description}</p>
+              <div className="flex justify-between items-center mt-4">
+                <span className="font-bold text-blue-700">{course.fee}</span>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg">
+                  View Details
+                </button>
               </div>
             </div>
           ))}
@@ -89,20 +98,17 @@ const Courses = () => {
 
       {/* Modal */}
       {selectedCourse && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={() => setSelectedCourse(null)}>
-          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative" onClick={(e) => e.stopPropagation()}>
-            <span className="absolute top-4 right-4 text-3xl cursor-pointer text-gray-500 hover:text-gray-700" onClick={() => setSelectedCourse(null)}>&times;</span>
-            <h2 className="text-2xl font-bold text-blue-700 mb-4">{selectedCourse.name}</h2>
-            <p className="mb-2"><strong>Duration:</strong> {selectedCourse.duration}</p>
-            <p className="mb-2"><strong>Level:</strong> {selectedCourse.level}</p>
-            <p className="mb-4"><strong>Fee:</strong> {selectedCourse.fee}</p>
-            <h3 className="text-xl font-bold text-blue-700 mb-3">What You'll Learn:</h3>
-            <ul className="list-disc list-inside mb-6 space-y-1">
-              {selectedCourse.curriculum.map((item, index) => (
-                <li key={index} className="text-gray-600">{item}</li>
-              ))}
-            </ul>
-            <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition" onClick={() => window.location.href='/contact'}>Enroll Now</button>
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center" onClick={() => setSelectedCourse(null)}>
+          <div className="bg-white p-6 rounded-xl max-w-xl w-full" onClick={(e) => e.stopPropagation()}>
+            <h2 className="text-2xl font-bold text-blue-700">{selectedCourse.name}</h2>
+            <p>{selectedCourse.description}</p>
+
+            <button
+              className="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg"
+              onClick={handleEnroll}
+            >
+              Enroll Now
+            </button>
           </div>
         </div>
       )}
