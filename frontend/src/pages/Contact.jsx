@@ -18,7 +18,7 @@ const Contact = () => {
     address: "Sanskrit Hub, Andheri East, Mumbai - 400069",
     phone: "+91 91679 65239",
     phoneAlt: "+91 98765 43210",
-    email: "ambition.tutorial21@gmail.com",
+    email: "info@sanskrithub.com",
     emailAlt: "support@sanskrithub.com",
     whatsapp: "+91 91679 65239",
     instagram: "@sanskrithub",
