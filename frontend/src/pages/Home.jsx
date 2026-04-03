@@ -124,16 +124,16 @@ const Home = () => {
             Our Results
           </h2>
           <div className="max-w-4xl mx-auto">
-  <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
-    <div className="p-6 text-center">
-      <img
-        src={results[currentResult]}
-        alt={`Result ${currentResult + 1}`}
-        className="w-full max-h-[500px] rounded-lg shadow-lg object-contain mx-auto"
-      />
-    </div>
-  </div>
-</div>
+            <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+              <div className="p-6 text-center">
+                <img
+                  src={results[currentResult]}
+                  alt={`Result ${currentResult + 1}`}
+                  className="w-full max-h-[500px] rounded-lg shadow-lg object-contain mx-auto"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -189,12 +189,8 @@ const Home = () => {
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">Select Course</option>
-                  <option value="Sanskrit Beginner">Sanskrit Beginner</option>
-                  <option value="Sanskrit Advanced">Sanskrit Advanced</option>
-                  <option value="Hindi Beginner">Hindi Beginner</option>
-                  <option value="Hindi Advanced">Hindi Advanced</option>
-                  <option value="Spoken Sanskrit">Spoken Sanskrit</option>
-                  <option value="Vedic Studies">Vedic Studies</option>
+                  <option value="11th Commerce">11th Commerce</option>
+                  <option value="12th Commerce">12th Commerce</option>
                 </select>
               </div>
               <div className="mb-4">
@@ -239,20 +235,20 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Courses */}
+      {/* Popular Courses - 11th & 12th Commerce */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-yellow-400 after:mx-auto after:mt-4">
-            Popular Courses
+            Popular Commerce Courses
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {/* 11th Commerce Card */}
             <div className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-1 transition text-center">
               <h3 className="text-xl font-bold text-blue-700 mb-3">
-                Sanskrit Beginner
+                11th Commerce
               </h3>
               <p className="text-gray-600 mb-4">
-                Learn basics of Sanskrit language, alphabet, and simple
-                conversations
+                Clear understanding of Accounts, Economics, and Business Studies with practical approach.
               </p>
               <Link
                 to="/courses"
@@ -261,27 +257,14 @@ const Home = () => {
                 Learn More →
               </Link>
             </div>
+
+            {/* 12th Commerce Card */}
             <div className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-1 transition text-center">
               <h3 className="text-xl font-bold text-blue-700 mb-3">
-                Hindi Advanced
+                12th Commerce
               </h3>
               <p className="text-gray-600 mb-4">
-                Master Hindi grammar, literature, and fluent communication
-                skills
-              </p>
-              <Link
-                to="/courses"
-                className="text-blue-600 font-semibold hover:text-blue-800"
-              >
-                Learn More →
-              </Link>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-1 transition text-center">
-              <h3 className="text-xl font-bold text-blue-700 mb-3">
-                Vedic Studies
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Explore ancient Vedic texts and their modern applications
+                Advanced Accounts, Economics & BST with board-focused strategy and high scoring techniques.
               </p>
               <Link
                 to="/courses"

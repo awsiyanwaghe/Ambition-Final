@@ -1,111 +1,165 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const GOOGLE_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdyeMSCL_RqlDFk10pn6WsqCbI7XIo9px7SiBvnzj-OjW67Xw/viewform";
 
 const Courses = () => {
-  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedClass, setSelectedClass] = useState(null);
 
   const handleEnroll = () => {
     window.open(GOOGLE_FORM_URL, "_blank");
   };
 
-  const courses = [
+  const classes = [
     {
       id: 1,
-      name: "Sanskrit Beginner",
-      duration: "3 months",
-      level: "Beginner",
-      description: "Introduction to Sanskrit alphabet, basic vocabulary, and simple sentence formation.",
-      curriculum: ["Devanagari Script", "Basic Grammar", "Simple Conversations", "Common Vocabulary"],
-      fee: "₹5,000"
+      name: "Class 5th to 7th",
+      description:
+        "Strong foundation building in Maths, Science, and all subjects with simple explanation and personal attention.",
+      features: [
+        "Basic Concept Clarity",
+        "All Subjects Covered",
+        "Regular Tests",
+        "Homework Support",
+      ],
     },
     {
       id: 2,
-      name: "Sanskrit Advanced",
-      duration: "6 months",
-      level: "Advanced",
-      description: "Advanced grammar, literature, and composition.",
-      curriculum: ["Advanced Grammar", "Literature Study", "Poetry & Prose", "Translation Skills"],
-      fee: "₹8,000"
+      name: "Class 8th & 9th",
+      description:
+        "Focused learning in Maths & Science with deep concept understanding and exam preparation.",
+      features: [
+        "Concept-Based Learning",
+        "Maths + Science Focus",
+        "Weekly Tests",
+        "Doubt Solving",
+      ],
     },
     {
       id: 3,
-      name: "Hindi Beginner",
-      duration: "2 months",
-      level: "Beginner",
-      description: "Learn Hindi alphabet and conversations.",
-      curriculum: ["Hindi Script", "Basic Grammar", "Daily Conversations", "Common Phrases"],
-      fee: "₹4,000"
+      name: "Class 10th",
+      description:
+        "Board exam preparation with strong focus on Maths, Science, and scoring techniques.",
+      features: [
+        "Board Preparation",
+        "Important Questions",
+        "Test Series",
+        "Time Management",
+      ],
     },
     {
       id: 4,
-      name: "Hindi Advanced",
-      duration: "4 months",
-      level: "Advanced",
-      description: "Advanced Hindi grammar and communication.",
-      curriculum: ["Advanced Grammar", "Hindi Literature", "Essay Writing", "Public Speaking"],
-      fee: "₹6,000"
+      name: "11th Commerce",
+      description:
+        "Clear understanding of Accounts, Economics, and Business Studies with practical approach.",
+      features: [
+        "Accounts Basics",
+        "Economics Concepts",
+        "Regular Practice",
+        "Exam Preparation",
+      ],
     },
     {
       id: 5,
-      name: "Spoken Sanskrit",
-      duration: "2 months",
-      level: "All Levels",
-      description: "Conversational Sanskrit for daily use.",
-      curriculum: ["Conversational Phrases", "Daily Use Vocabulary", "Role Plays", "Group Discussions"],
-      fee: "₹4,500"
+      name: "12th Commerce",
+      description:
+        "Advanced Accounts, Economics & BST with board-focused strategy and high scoring techniques.",
+      features: [
+        "Board Level Preparation",
+        "Important Topics Focus",
+        "Mock Tests",
+        "Revision Strategy",
+      ],
     },
-    {
-      id: 6,
-      name: "Vedic Studies",
-      duration: "6 months",
-      level: "Advanced",
-      description: "Study of Vedic texts and mantras.",
-      curriculum: ["Vedic Literature", "Mantra Chanting", "Vedic Philosophy", "Modern Applications"],
-      fee: "₹10,000"
-    }
   ];
 
   return (
     <div>
+      {/* Hero */}
       <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white pt-28 pb-16 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Courses</h1>
-        <p className="text-xl">Choose your course</p>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          Our Classes
+        </h1>
+        <p className="text-xl">Choose your class</p>
       </div>
 
+      {/* Cards */}
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses.map(course => (
+          {classes.map((cls) => (
             <div
-              key={course.id}
+              key={cls.id}
+              onClick={() => setSelectedClass(cls)}
               className="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 transition cursor-pointer"
-              onClick={() => setSelectedCourse(course)}
             >
-              <h3 className="text-xl font-bold text-blue-700">{course.name}</h3>
-              <p className="text-gray-500">📅 {course.duration}</p>
-              <p className="text-gray-600">{course.description}</p>
-              <div className="flex justify-between items-center mt-4">
-                <span className="font-bold text-blue-700">{course.fee}</span>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg">
-                  View Details
-                </button>
-              </div>
+              <h3 className="text-xl font-bold text-blue-700">
+                {cls.name}
+              </h3>
+              <p className="text-gray-600 mt-2">{cls.description}</p>
+
+              <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg">
+                View Details
+              </button>
             </div>
           ))}
         </div>
       </div>
 
       {/* Modal */}
-      {selectedCourse && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center" onClick={() => setSelectedCourse(null)}>
-          <div className="bg-white p-6 rounded-xl max-w-xl w-full" onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-2xl font-bold text-blue-700">{selectedCourse.name}</h2>
-            <p>{selectedCourse.description}</p>
-
+      {selectedClass && (
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          onClick={() => setSelectedClass(null)}
+        >
+          <div
+            className="bg-white p-6 rounded-xl max-w-xl w-full mx-4 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
             <button
-              className="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg"
+              onClick={() => setSelectedClass(null)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl font-bold"
+              aria-label="Close"
+            >
+              ✕
+            </button>
+
+            <h2 className="text-2xl font-bold text-blue-700 pr-6">
+              {selectedClass.name}
+            </h2>
+
+            <p className="mt-2">{selectedClass.description}</p>
+
+            <div className="mt-3 flex items-center justify-between bg-green-50 border border-green-200 px-4 py-2 rounded-lg animate-pulse">
+              <p className="text-green-700 font-semibold flex items-center gap-2">
+                <span className="text-lg">⭐</span>
+                Limited Seats Available
+              </p>
+
+              <span className="text-xs bg-green-600 text-white px-2 py-1 rounded-full animate-bounce">
+                Hurry!
+              </span>
+            </div>
+
+            {/* Features */}
+            <ul className="mt-4 list-disc pl-5">
+              {selectedClass.features.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            {/* Fees */}
+            <div className="mt-6 bg-gray-100 p-4 rounded-lg">
+              <h3 className="font-bold text-lg mb-2">Fees Structure</h3>
+              <p>💰 One Installment: ₹27,000</p>
+              <p>💰 Two Installments: ₹38,999</p>
+              <p>💰 Three Installments: ₹40,999</p>
+            </div>
+
+            {/* Button */}
+            <button
               onClick={handleEnroll}
+              className="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg"
             >
               Enroll Now
             </button>
